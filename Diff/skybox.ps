@@ -1,0 +1,33 @@
+// GLOBALS
+Texture2D shaderTexture;
+SamplerState SampleType;
+TextureCube SkyMap;
+
+cbuffer LightBuffer
+{
+	float4 diffuseColor;
+	float3 lightDirection;
+	float lightPadding;
+	float3 cameraPosi;
+	float cameraPadding;
+};
+
+cbuffer PixelBuffer
+{
+    float4 pixelColor;
+};
+
+// TYPEDEFS
+struct PixelInputType
+{
+    float4 position : SV_POSITION;
+	float3 normal : NORMAL;
+    float2 tex : TEXCOORD0;
+	float3 posWorld : TEXCOORD1;
+};
+
+// Pixel Shader
+float4 SkyboxPixelShader(PixelInputType input) : SV_TARGET
+{
+	return SkyMap.Sample(SampleType, input.posWorld);
+}

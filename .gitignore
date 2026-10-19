@@ -1,0 +1,13 @@
+*.tsbuildinfo
+.vs/
+*.sdf
+*.suo
+*.user
+ipch/
+
+Diff/debug/
+Debug/
+Release/
+Diff/Release/
+Diff/shader-error.txt
+/DirectXTK/

@@ -1,0 +1,24 @@
+#include "SurfaceLighting.hlsli"
+
+cbuffer LightBuffer : register(b0)
+{
+    float4 diffuseColor;
+    float3 lightDirection;
+    float lightPadding;
+    float3 cameraPosition;
+    float cameraPadding;
+};
+
+struct SurfaceInput
+{
+    float4 position : SV_POSITION;
+    float3 normal : NORMAL;
+    float3 worldPosition : TEXCOORD0;
+    float3 tangent : TEXCOORD1;
+};
+
+float4 LightPixelShader(SurfaceInput input) : SV_TARGET
+{
+    return EvaluateSurfaceColor(input.normal, input.tangent, lightDirection,
+                                cameraPosition - input.worldPosition, diffuseColor);
+}

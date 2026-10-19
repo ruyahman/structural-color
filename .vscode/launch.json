@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Diff をデバッグ",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/Debug/Diff.exe",
+      "cwd": "${workspaceFolder}/Diff",
+      "preLaunchTask": "Build Diff (Debug)",
+      "stopAtEntry": false
+    }
+  ]
+}
